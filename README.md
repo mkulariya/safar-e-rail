@@ -1,67 +1,24 @@
 # सफ़र-ए-रेल · Safar-e-Rail
 
-An infinite **AC 2-Tier** train journey through green India, with non-stop **90s Bollywood** radio.
+A slow, endless train journey through India from an AC 2-tier window seat.
 
-Open the tab → choose one of **10 trains** and its route → board → look out the window.
+Choose a route, board, and let the scenery roll by while live radio plays in the background.
 
-## Features
+## The journey
 
-- **Onboarding:** pick a famous train (major cities only) and board with a ticket-style pass
-- **Parallax world:** Seven depth layers, fog, camera sway, biome changes every ~2 minutes
-- **Biomes:** dense forest, tea hills, river valley, paddy plains, waterfall gorge
-- **Window frame:** AC coach glass, curtains, berth edge, glass reflections tied to sway
-- **Audio:** free Bollywood/retro streams with auto-reconnect + subtle train ambience
-- **Static site:** no backend, deploy anywhere
+- Choose from 10 Indian train journeys, each with its own route and starting landscape.
+- Watch warm, atmospheric landscapes move past the coach window and change as the journey continues.
+- Listen to live stations covering 90s hits, Bollywood, ghazals, and lo-fi.
+- Change stations, adjust the volume, mute the audio, or enter fullscreen while travelling.
+- Use the back control to return to the train-selection screen and begin another journey.
 
-## Dev
+## Start locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Deploy (Cloudflare Pages)
+Open the local address shown by the development server, choose a train, and select **Board the train**.
 
-**Detailed step-by-step (Git, direct upload, Wrangler, custom domain, troubleshooting):**
-
-👉 **[docs/deploy-cloudflare.md](docs/deploy-cloudflare.md)**
-
-### Short version
-
-```bash
-npm install
-npm run build          # output → dist/
-npm run preview        # optional local production check → http://localhost:4173
-```
-
-| Cloudflare Pages setting | Value |
-|---|---|
-| Framework preset | Vite |
-| Build command | `npm run build` |
-| Output directory | `dist` |
-| Root directory | *(empty)* |
-| Env var | `NODE_VERSION` = `20` |
-| Production branch | `main` |
-
-**Recommended path:** push this repo to GitHub → Cloudflare Dashboard → **Workers & Pages** → **Create** → **Connect to Git** → fill the table above → **Save and Deploy**.
-
-**CLI alternative:**
-
-```bash
-npx wrangler login
-npx wrangler pages deploy dist --project-name=safar-e-rail
-```
-
-**Custom domain** (optional, e.g. `.top`): Pages project → **Custom domains** → add domain (free SSL). Full DNS steps are in the deploy guide.
-
-## Stack
-
-Vite · TypeScript · Three.js · Web Audio API · plain CSS
-
-## Radio stations
-
-See [docs/stations.md](docs/stations.md). Streams are free online stations (Zeno.fm / radio-browser).
-
-## License notes
-
-See [docs/assets.md](docs/assets.md).
+Radio is provided by external live streams, so station availability and track information may vary.

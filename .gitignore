@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Keep deployment notes local
+docs/deploy-cloudflare.md
