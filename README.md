@@ -10,7 +10,6 @@ Choose a route, board, and let the scenery roll by while live radio plays in the
 - Watch warm, atmospheric landscapes move past the coach window and change as the journey continues.
 - Listen to live stations covering 90s hits, Bollywood, ghazals, and lo-fi.
 - Change stations, adjust the volume, mute the audio, or enter fullscreen while travelling.
-- Use the back control to return to the train-selection screen and begin another journey.
 
 ## Start locally
 
