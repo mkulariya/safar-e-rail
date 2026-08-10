@@ -10,6 +10,12 @@
 :root {
   --sway-x: 0px;
   --sway-y: 0px;
+  /* Keep the coach window landscape at every viewport size. */
+  --window-ratio: 1.7777778;
+  --window-aspect: 16 / 9;
+  --window-viewport-height: 100vh;
+  --window-width-gutter: 10vw;
+  --window-height-gutter: 9vh;
   /* Outer edge of black frame */
   --win-top: 4.5%;
   --win-right: 5%;
@@ -29,6 +35,12 @@
   --font-display: 'Cormorant Garamond', 'Tiro Devanagari Hindi', Georgia, serif;
   --font-hi: 'Tiro Devanagari Hindi', 'Noto Serif Devanagari', serif;
   --font-ui: 'Inter', system-ui, sans-serif;
+}
+
+@supports (height: 100dvh) {
+  :root {
+    --window-viewport-height: 100dvh;
+  }
 }
 
 html,
@@ -64,6 +76,7 @@ body {
   inset: 0;
   z-index: 2;
   pointer-events: none;
+  background: var(--coach);
   opacity: 0;
   transition: opacity 0.8s ease;
 }
@@ -111,10 +124,17 @@ body.journey-active #window-stack {
 */
 .window-unit {
   position: absolute;
-  top: var(--win-top);
-  right: var(--win-right);
-  bottom: var(--win-bottom);
-  left: var(--win-left);
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  width: min(
+    calc(100vw - var(--window-width-gutter)),
+    calc((var(--window-viewport-height) - var(--window-height-gutter)) * var(--window-ratio))
+  );
+  height: auto;
+  aspect-ratio: var(--window-aspect);
+  transform: translate(-50%, -50%);
   z-index: 2;
   box-sizing: border-box;
   border: var(--frame-w) solid var(--frame);
@@ -251,6 +271,7 @@ body.journey-active #chrome:not(.dimmed) {
   display: flex;
   align-items: center;
   gap: 0.85rem;
+  width: 100%;
   max-width: min(560px, 94vw);
   padding: 0.65rem 0.85rem 0.65rem 1.05rem;
   border-radius: 999px;
@@ -977,6 +998,8 @@ body.journey-active #chrome:not(.dimmed) {
 
 @media (max-width: 600px) {
   :root {
+    --window-width-gutter: 6vw;
+    --window-height-gutter: 6vh;
     --win-top: 3%;
     --win-right: 3%;
     --win-bottom: 3%;
@@ -1014,5 +1037,38 @@ body.journey-active #chrome:not(.dimmed) {
   }
   .dd-route {
     text-align: left;
+  }
+}
+
+/* Give the station and playback controls their own rows before they can collide. */
+@media (max-width: 480px) {
+  .control-cell {
+    gap: 0.35rem;
+  }
+  .now-playing,
+  .chrome-controls {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+  .station-dd-trigger {
+    min-width: 0;
+    max-width: none;
+  }
+  .chrome-controls {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 360px) {
+  .icon-btn {
+    width: 32px;
+    height: 32px;
+  }
+  #vol-slider {
+    width: 56px;
+  }
+  .chrome-controls {
+    justify-content: space-between;
+    gap: 0;
   }
 }
